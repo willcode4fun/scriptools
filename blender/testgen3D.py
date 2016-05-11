@@ -1,17 +1,23 @@
 #!/usr/local/bin/python2.7
 # to run : D:/TOOLS/Blender/blender --background minion.blend -P testgen3D.py &
 # C:/TOOLS/Blender/blender --background -P testgen3D.py &
+# C:/OUTILS/blender-2.77a-windows64/blender --background -P testgen3D.py -- conf.yaml &
 import sys
 import os
 import bpy
 import bmesh
 import math
 import mathutils
+from pprint import pprint
 from math import radians
 from math import degrees
 from mathutils import Vector
+
 sys.path.append('utils')
+#sys.path.append(os.getcwd()+'/utils')
 import character
+import configuration
+
 
 def clear_scene():
 	bpy.ops.object.mode_set(mode='OBJECT')
@@ -94,9 +100,6 @@ def groupAll():
 	print("max")
 	print(max)
 scene = bpy.data.scenes['Scene']
-
-#mat = createMaterial() 
-
 # Create new cube and give it UVs
 #bpy.ops.mesh.primitive_cube_add(location=(0,0,2))
 bpy.ops.mesh.primitive_uv_sphere_add(segments= 8, ring_count=8, location=(0,0,2))
@@ -135,7 +138,10 @@ groupAll()
 #bpy.ops.transform.resize(value=(0.5, 0.5, 0.5))
 #render front
 rotate_camera_front(cam)
-scene.render.filepath = os.getcwd()+'/image_front.png'
+
+scene.render.filepath =  os.getcwd()+'/image_front.png'
+#scene.render.filepath = 'D:/PROJETS/PERSO/blender/image_front.png'
+
 bpy.ops.render.render( write_still=True) 
 
 def isometric8directions() :
@@ -153,5 +159,10 @@ isometric8directions()
 	
 test = Vector((4,0,0)) * mathutils.Matrix.Rotation(radians(90), 4, 'Z')
 print(test)
+file_name = sys.argv[-1]
+conf = configuration.read_conf(file_name)
+print('Configuration file :'+file_name)
+pprint(conf)
+
 bpy.ops.wm.quit_blender()
 #sys.exit(0)

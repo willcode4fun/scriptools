@@ -15,9 +15,10 @@ def makeMaterial(name, diffuse, specular, alpha):
 	mat.emit=0.5
 	return mat
 
-red = makeMaterial('Red',(1,0,0),(1,0.5,.05),1)
-blue = makeMaterial('Blue',(0,0,1),(1,1,1),1)
-white = makeMaterial('White',(1,1,1),(1,1,1),1)
+red = makeMaterial('Red',(1,0,0), (1,1,1), 0.2)
+blue = makeMaterial('Blue',(0,0,1), (1,1,1), 1)
+green = makeMaterial('Blue',(0,1,0), (1,1,1), 1)
+white = makeMaterial('White',(1,1,1), (1,1,1), 1)
 
 def createMaterial():    
     # Create image texture from image. Change here if the snippet 

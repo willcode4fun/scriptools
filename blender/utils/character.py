@@ -79,6 +79,7 @@ def drawBone2(p1, p2, radiuses, material):
   bpy.ops.transform.rotate(value=rot.angle, axis=rot.axis)
   #bpy.ops.object.editmode_toggle()
   #bpy.ops.transform.translate(value=Vector((0,0,-0.5*length))*rot.to_matrix())
+  rot.normalize();
   bpy.ops.transform.translate(value=Vector((0,0,0.5*length))*rot.to_matrix())
   bpy.ops.transform.translate(value=p1)
   return (s1,s2,c1)
@@ -112,6 +113,8 @@ def createCharacter():
   body1 = drawBone2((1,0,2),(1,0,3),(0.3,0.3,0.3),materials.blue)
   body3 = drawBone2((-1,0,2),(-1,0,3),(0.3,0.3,0.3),materials.blue)
   
+  body5 = drawBone2((0,0,5),(1,0,3),(0.2,0.2,0.2),materials.blue)
+  body4 = drawBone2((0,0,5),(-1,0,3),(0.2,0.2,0.2),materials.blue)
   #arm1 = drawBone((1,0,3),0.4,0.5,materials.blue)
   #rotateG(arm1,135,(0,1,0))
   #bpy.ops.transform.translate(value=(0.6,0,-1.5))

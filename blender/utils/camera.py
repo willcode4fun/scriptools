@@ -29,16 +29,11 @@ def rotate_camera(p_rotation):
 def rotate_camera_front():
 	p_camera = bpy.data.objects['Camera']
 	#camera position
-	loc = Vector((0,6.0,3.0))
-	p_camera.location = loc.to_tuple()
-	
+	p_camera.location = Vector((0,7.0,2.0)).to_tuple()
 	rx = 90.0
 	mat_rot = mathutils.Matrix.Rotation(radians(180), 4, 'Z')
 	mat_rot *= mathutils.Matrix.Rotation(radians(rx), 4, 'X')
-	#print(mat_rot)
-	#print(mat_rot.to_euler())
 	p_camera.rotation_euler = mat_rot.to_euler()
-	
 	fov = 50.0
 	# Set camera fov in degrees
 	p_camera.data.angle = radians(fov)

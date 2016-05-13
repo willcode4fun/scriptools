@@ -90,13 +90,11 @@ def rotateG(objs, rot, paxis):
     obj.select = True  
   bpy.ops.transform.rotate(value=radians(rot),axis=paxis)
 def createCharacter():  
-  #drawSphere((1.5,0,1.3),0.5)
-  #drawSphere((-1.5,0,1.3),0.5)
-  #drawSphere((0,0,2.3),1.5)
-
-  #drawSphere((0,1.5,2.3),0.4)
-  #drawSphere((0,0,0),1)
   drawCube((0,0,0),2,materials.red)
+  drawCube((1,1,0.1),0.1,materials.green)
+  drawCube((-1,1,0.1),0.1,materials.green)
+  drawCube((-1,-1,0.1),0.1,materials.green)
+  drawCube((1,-1,0.1),0.1,materials.green)
   #drawCube((0,-1,1),1,materials.red)
   drawCube((1,0,3),0.4,materials.red)
   drawCube((1,0,2),0.4,materials.red)
@@ -105,24 +103,12 @@ def createCharacter():
   #drawCube((0,-1,3),1,materials.red)
   #head = drawSphere((0,0,3.5),1.2,materials.red)
   
-  #body = drawBone((0,0,2),1.2,0.2,materials.white)
-  
-  #body = drawBone2((0,0,2),(1,0,2),(1,1.5,0.6),materials.white)
-  
   body52 = drawBone2((-1,0,3),(1,0,3),(0.5,0.5,0.5),materials.green)
   body1 = drawBone2((1,0,2),(1,0,3),(0.3,0.3,0.3),materials.blue)
   body3 = drawBone2((-1,0,2),(-1,0,3),(0.3,0.3,0.3),materials.blue)
   
   body5 = drawBone2((0,0,5),(1,0,3),(0.2,0.2,0.2),materials.blue)
   body4 = drawBone2((0,0,5),(-1,0,3),(0.2,0.2,0.2),materials.blue)
-  #arm1 = drawBone((1,0,3),0.4,0.5,materials.blue)
-  #rotateG(arm1,135,(0,1,0))
-  #bpy.ops.transform.translate(value=(0.6,0,-1.5))
-  
-  #arm2 = drawBone((-1,0,3),0.4,0.5,materials.blue)
-  #rotateG(arm2,-135,(0,1,0))
-  #bpy.ops.transform.translate(value=(-0.6,0,-1.5))
-  #bpy.ops.transform.translate(value=(-0.6,0,-1.5))
   
 
   

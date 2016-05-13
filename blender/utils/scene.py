@@ -4,6 +4,7 @@ import os
 import bpy
 import mathutils
 from mathutils import Vector
+import logging
 
 def prepare():
 	scene = bpy.data.scenes['Scene']
@@ -17,14 +18,36 @@ def prepare():
 	scene.render.use_antialiasing = True
 def clear():
 	bpy.ops.object.mode_set(mode='OBJECT')
+	
+	
 	bpy.ops.object.select_by_type(type='MESH')
 	bpy.ops.object.delete(use_global=False)
 	for item in bpy.data.meshes:
 		bpy.data.meshes.remove(item)
 def render_in_file(filename):
 	bpy.context.scene.render.filepath = os.getcwd()+"/"+filename
-	bpy.ops.render.render( write_still=True)	
-
+	handlers = logging.getLogger().handlers
+	logging.getLogger().handlers = []
+	bpy.ops.render.render( write_still=True)
+	logging.getLogger().handlers = handlers
+		
+	
+def compute_dimentions():
+	objs = (obj for obj in bpy.data.objects if obj.type == 'MESH')
+	x=(10000,0)
+	y=(10000,0)
+	z=(10000,0)
+	for obj in objs:
+		x = (min(x[0],obj.location.x),max(x[1],obj.location.x+obj.dimensions.x))
+		y = (min(y[0],obj.location.y),max(y[1],obj.location.y+obj.dimensions.y))
+		z = (min(z[0],obj.location.z),max(z[1],obj.location.z+obj.dimensions.z))
+	return(x,y,z)
+def select_all_meshes():
+	objs = (obj for obj in bpy.data.objects if obj.type == 'MESH')
+	for obj in objs:
+		obj.select = True
+# OLD CRAP
+	
 def maxVect(vect1, vect2):
 	return Vector((max(vect1.x,vect2.x),max(vect1.y,vect2.y),max(vect1.z,vect2.z)))
 

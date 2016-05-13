@@ -8,8 +8,8 @@ import logging
 
 def prepare():
 	scene = bpy.data.scenes['Scene']
-	scene.render.resolution_x = 500
-	scene.render.resolution_y = 500
+	scene.render.resolution_x = 200
+	scene.render.resolution_y = 200
 	scene.world.ambient_color = (0.1,0.1,0.1)
 	scene.render.image_settings.file_format="PNG";
 	scene.render.alpha_mode = 'TRANSPARENT' 

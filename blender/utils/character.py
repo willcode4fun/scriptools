@@ -89,12 +89,15 @@ def rotateG(objs, rot, paxis):
   for obj in objs:  
     obj.select = True  
   bpy.ops.transform.rotate(value=radians(rot),axis=paxis)
-def createCharacter():  
+def draw_table():  
   drawCube((0,0,0),2,materials.red)
   drawCube((1,1,0.1),0.1,materials.green)
   drawCube((-1,1,0.1),0.1,materials.green)
   drawCube((-1,-1,0.1),0.1,materials.green)
   drawCube((1,-1,0.1),0.1,materials.green)
+  drawCylinder((0,0,0.1), (1,1,0), 0.1, materials.green)
+
+def createCharacter():
   #drawCube((0,-1,1),1,materials.red)
   drawCube((1,0,3),0.4,materials.red)
   drawCube((1,0,2),0.4,materials.red)

@@ -22,12 +22,12 @@ scene.prepare()
 #character.createCharacter()
 
 
-full_path_to_file = os.getcwd()+"/TRTL_GRN.OBJ"
+full_path_to_file = os.getcwd()+"/objs/sample.obj"
 bpy.ops.import_scene.obj(filepath=full_path_to_file)
 scene.select_all_meshes()
 bpy.ops.transform.resize(value=(2,2,2))
 
-#character.draw_table()
+character.draw_table()
 
 #render front
 camera.rotate_camera_front()
